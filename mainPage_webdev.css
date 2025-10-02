@@ -20,6 +20,7 @@ table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 80%;
+  margin: 20px auto;
 }
 
 td, th {
@@ -31,4 +32,5 @@ td, th {
 tr:nth-child(even) {
   background-color: #dddddd;
 }
+
 
