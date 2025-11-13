@@ -18,11 +18,28 @@ nav a {
   text-decoration: none;
   color: #333;
   font-weight: bold;
+  padding: 0.35rem 0.6rem;
+  border-radius: 6px;
+  display: inline-block;
+  transition: background-color 200ms ease, color 200ms ease, transform 150ms ease, box-shadow 200ms ease;
+  outline: none;
 }
 
 nav a:hover,
-nav a:focus {
-  text-decoration: underline;
+nav a:focus,
+nav a:focus-visible {
+  text-decoration: none;
+  background-color: #333;
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+}
+
+nav a.active {
+  background-color: #333;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
 }
 
 main {
@@ -111,5 +128,3 @@ th {
 tr:nth-child(even) {
   background-color: #fafafa;
 }
-
-
