@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact | John O'Reilly Cars</title>
   <link rel="stylesheet" href="style.css">
+  <link href="untitledcss.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -24,26 +25,29 @@
       <p>If you have a question or want to book an appointment, please fill out the form below.</p>
 
       <form action="#" method="post">
-        <label for="1name">First Name</label>
-        <input type="text" id="1name" name="1name" required>
+  <label for="1name">First Name</label>
+  <input type="text" id="1name" name="1name" required>
+  <p id="err-first" class="error"></p>  
 
-        <label for="2name">Second Name</label>
-        <input type="text" id="2name" name="2name" required>
+  <label for="2name">Second Name</label>
+  <input type="text" id="2name" name="2name" required>
+  <p id="err-last" class="error"></p>   
 
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" required>
+  <label for="email">Email Address</label>
+  <input type="email" id="email" name="email" required>
 
-        <label for="cars">Reason for Inquiry</label>
-          <select id="reason" name="reasons">
-            <option value="general feedback">Gerneral Feedback</option>
-            <option value="technical support">Technical Support</option>
-          </select>
+  <label for="cars">Reason for Inquiry</label>
+  <select id="reason" name="reasons">
+    <option value="general feedback">Gerneral Feedback</option>
+    <option value="technical support">Technical Support</option>
+  </select>
 
-        <label for="message">Message</label>
-        <textarea id="message" name="message" required></textarea>
+  <label for="message">Message</label>
+  <textarea id="message" name="message" required></textarea>
+  <p id="err-msg" class="error"></p>   
 
-        <button type="submit">Send</button>
-      </form>
+  <button type="submit">Send</button>
+</form>
 
       <h3>Get in Touch</h3>
       <p>
@@ -57,5 +61,51 @@
   <footer>
     <p>@ 2025 John O'Reilly Cars — We polish our replies too!</p>
   </footer>
+  <script>
+document.querySelector("form").addEventListener("submit", function(event) {
+
+    event.preventDefault(); 
+    let valid = true;
+
+    
+    let firstName = document.getElementById("1name").value.trim();
+    let lastName  = document.getElementById("2name").value.trim();
+    let message   = document.getElementById("message").value.trim();
+
+    
+    let errFirst = document.getElementById("err-first");
+    let errLast  = document.getElementById("err-last");
+    let errMsg   = document.getElementById("err-msg");
+
+    
+    errFirst.textContent = "";
+    errLast.textContent = "";
+    errMsg.textContent = "";
+
+    
+    if (firstName.includes(" ")) {
+        errFirst.textContent = "First name must not contain spaces.";
+        valid = false;
+    }
+
+    
+    if (lastName.includes(" ")) {
+        errLast.textContent = "Last name must not contain spaces.";
+        valid = false;
+    }
+
+    
+    let wordCount = message.split(/\s+/).filter(w => w.length > 0).length;
+
+    if (wordCount < 15 || wordCount > 60) {
+        errMsg.textContent = "Message must be between 15 and 60 words. (Current: " + wordCount + ")";
+        valid = false;
+    }
+
+    if (valid) {
+        alert("Form submitted successfully (simulation)");
+    }
+});
+</script>
 </body>
 </html>
