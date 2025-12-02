@@ -128,3 +128,9 @@ th {
 tr:nth-child(even) {
   background-color: #fafafa;
 }
+
+.error {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 4px;
+}
